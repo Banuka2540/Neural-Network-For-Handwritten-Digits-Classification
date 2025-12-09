@@ -3,12 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digit predict app</title>
+    <title>Digit Prediction App</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #1a002d, #32004f);
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            width: 340px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        input[type="file"] {
+            margin: 20px 0;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            color: black;
+            width: 100%;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background: #7500ff;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #9c2bff;
+        }
+
+        p {
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
-    <h1>upload the image : </h1>
-    <button>PREDICT </button>
-    <h2>the results may be vary : the accuracy is almost 97% </h2>
-    
+
+    <div class="card">
+        <h1>Digit Prediction</h1>
+
+        <input type="file" accept="image/*">
+        
+        <button onclick = predict() >PREDICT</button>
+
+        <p>⚠️ Results may vary — model accuracy ~97%</p>
+    </div>
+
 </body>
 </html>
