@@ -9,10 +9,17 @@
 <body>
     <div class="card">
         <h1>Digit Prediction</h1>
-        <form class="form" action="/" method="POST">
-            <div class = "input-fields">
+        <form class="form" action="/" method="POST" enctype="multipart/form-data">
+            <div class = "inputfield">
                 <label>Drop the image here </label>
-            <input type="file" accept="image/*">
+                <input name ="input-image" type="file" accept="image/*">
+                <input class="btn" type="submit" value="Precict Number">
+            </div>
+
+            <div>
+                {% if pred_number != -1  %}
+                <p>Predicted Number is {{pred_number}}</p>
+                {% endif %}
             </div>
         </form>
         <p>⚠️ Results may vary — model accuracy ~97%</p>
