@@ -3,26 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digit Prediction App</title>
+    <title>Handwritten Digit Predictor</title>
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
-
 <body>
-    <div class="card">
-        <h1>Digit Prediction</h1>
-        <form class="form" action="/" method="POST" enctype="multipart/form-data">
-            <div class = "inputfield">
-                <label>Drop the image here </label>
-                <input name ="input-image" type="file" accept="image/*">
-                <input class="btn" type="submit" value="Precict Number">
-            </div>
+    <h1 class="title">Handwritten Digit Predictor</h1>
 
-            <div>
-                {% if pred_number != -1  %}
-                <p>Predicted Number is {{pred_number}}</p>
-                {% endif %}
-            </div>
-        </form>
-        <p>⚠️ Results may vary — model accuracy ~97%</p>
-    </div>
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" id="file-upload" name="digit_image" hidden accept="image/*">
+        
+        <label for="file-upload" class="upload-btn">Upload Image</label>
+        <div id="file-name" class="file-name">No file chosen</div>
+        
+        <button type="submit" class="submit-btn">Predict</button>
+    </form>
+
+    <!-- Prediction Result -->
+    {% if prediction is not none %}
+        <div class="prediction">
+            <h2>Predicted Digit: {{ prediction }}</h2>
+        </div>
+    {% endif %}
+
+    <script>
+        const fileInput = document.getElementById('file-upload');
+        const fileName = document.getElementById('file-name');
+
+        fileInput.addEventListener('change', () => {
+            if(fileInput.files.length > 0){
+                fileName.textContent = fileInput.files[0].name;
+            } else {
+                fileName.textContent = "No file chosen";
+            }
+        });
+    </script>
 </body>
 </html>
