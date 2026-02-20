@@ -7,35 +7,21 @@
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
-    <h1 class="title">Handwritten Digit Predictor</h1>
+    <div class="container">
+        <form class="forms" action="/" method = "POST" enctype="multipart/form-data">
+            
+            <h1 id = "heading"> - Minst Image Predictor - </h1>
+            <input type="file" name="image"> 
+            <label for="image">Uplaod the image Here!</label>
+            <button type="submit" id="button"> predict </button>
+        </form>
 
-    <form method="POST" enctype="multipart/form-data" class="upload-form">
-        <input type="file" id="file-upload" name="digit_image" hidden accept="image/*">
-        
-        <label for="file-upload" class="upload-btn">Upload Image</label>
-        <div id="file-name" class="file-name">No file chosen</div>
-        
-        <button type="submit" class="submit-btn">Predict</button>
-    </form>
-
-    <!-- Prediction Result -->
-    {% if prediction is not none %}
-        <div class="prediction">
-            <h2>Predicted Digit: {{ prediction }}</h2>
+        <div class = "result">
+            {% if pred_vlaue != 0 %}
+            <p>Predicted Number : {{pred_value}} </p>
+            {% endif %}
         </div>
-    {% endif %}
-
-    <script>
-        const fileInput = document.getElementById('file-upload');
-        const fileName = document.getElementById('file-name');
-
-        fileInput.addEventListener('change', () => {
-            if(fileInput.files.length > 0){
-                fileName.textContent = fileInput.files[0].name;
-            } else {
-                fileName.textContent = "No file chosen";
-            }
-        });
-    </script>
+    </div>
 </body>
+
 </html>
