@@ -7,23 +7,29 @@
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
+
     <div class="container">
-        <form class="forms" action="/" method = "POST" enctype="multipart/form-data">
+
+        <form class="card" action="/" method="POST" enctype="multipart/form-data">
             
-            <h1 id = "heading"> - Minst Image Predictor - </h1>
-            <input type="file" name="image"> 
-            <label>Uplaod the image Here!</label>
-            <button type="submit" id="button"> predict </button>
-        
-        
+            <h1 class="title">MNIST Digit Predictor</h1>
+
+            <div class="upload-section">
+                <label for="image" class="upload-label">Upload your digit image</label>
+                <input type="file" id="image" name="image" class="file-input">
+            </div>
+
+            <button type="submit" class="btn">Predict</button>
+
         </form>
 
-        <div class = "result">
+        <div class="result">
             {% if pred_vlaue != 0 %}
-            <p>Predicted Number : {{pred_value}} </p>
+            <p>Predicted Number: <span>{{pred_value}}</span></p>
             {% endif %}
         </div>
-    </div>
-</body>
 
+    </div>
+
+</body>
 </html>
